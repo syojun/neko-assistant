@@ -23,6 +23,21 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Verify secrets
+        env:
+          API_KEY: ${{ secrets.VITE_DIFY_API_KEY }}
+          API_BASE: ${{ secrets.VITE_DIFY_API_BASE_URL }}
+        run: |
+          if [ -z "$API_KEY" ]; then
+            echo "::error::VITE_DIFY_API_KEY が設定されていません。Settings > Secrets > Actions で追加してください。"
+            exit 1
+          fi
+          if [ -z "$API_BASE" ]; then
+            echo "::error::VITE_DIFY_API_BASE_URL が設定されていません。"
+            exit 1
+          fi
+          echo "Secrets configured"
+
       - name: Build
         env:
           VITE_DIFY_API_BASE_URL: ${{ secrets.VITE_DIFY_API_BASE_URL }}
