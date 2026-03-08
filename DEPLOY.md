@@ -26,9 +26,8 @@ git push -u origin main
 ## 3. GitHub Pages の有効化
 
 1. リポジトリの **Settings → Pages**
-2. **Source**: "Deploy from a branch" を選択
-3. **Branch**: `gh-pages` を選択（`/ (root)` のまま）
-4. 保存
+2. **Source**: **"GitHub Actions"** を選択
+3. 保存
 
 ## 4. デプロイ
 
